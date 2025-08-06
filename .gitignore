@@ -1,0 +1,16 @@
+# Backend
+hotel-backend/target/
+hotel-backend/.idea/
+hotel-backend/*.iml
+
+# Frontend
+hotel-frontend/node_modules/
+hotel-frontend/.next/
+hotel-frontend/.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
