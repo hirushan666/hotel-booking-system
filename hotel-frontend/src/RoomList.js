@@ -9,7 +9,7 @@ function RoomList({ rooms }) {
       <ul>
         {rooms.map(room => (
           <li key={room.id}>
-            Room {room.roomNumber} - {room.type} - ${room.price}
+            Room {room.roomNumber} - {room.type} - LKR {room.price}
           </li>
         ))}
       </ul>

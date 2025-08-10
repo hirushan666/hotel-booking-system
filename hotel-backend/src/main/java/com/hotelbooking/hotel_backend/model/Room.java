@@ -18,6 +18,14 @@ public class Room {
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     // Getters and Setters
     // (Or use Lombok @Getter @Setter if preferred)
     public String getRoomNumber() {
