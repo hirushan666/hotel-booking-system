@@ -3,6 +3,7 @@ package com.hotelbooking.hotel_backend.service;
 import com.hotelbooking.hotel_backend.model.User;
 import com.hotelbooking.hotel_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public User registerUser(User user) {
-        // Add password hashing later if needed
+        // Hash password before saving
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -33,7 +38,7 @@ public class UserService {
 
         user.setUsername(userDetails.getUsername());
         user.setEmail(userDetails.getEmail());
-        user.setPassword(userDetails.getPassword());  // Ideally hash password here
+        user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
 
         return userRepository.save(user);
     }
