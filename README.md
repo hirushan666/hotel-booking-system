@@ -24,11 +24,7 @@ A full-stack hotel booking application built with React frontend and Spring Boot
 2. Configure MySQL database:
    - Create a database named `hotelbooking`
    - Update `src/main/resources/application.properties` with your database credentials
-   - Default configuration:
-     - Host: localhost:3307
-     - Database: hotelbooking
-     - Username: root
-     - Password: wimantha
+   
 
 3. Run the Spring Boot application:
    ```bash
