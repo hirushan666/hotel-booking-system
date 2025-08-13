@@ -18,18 +18,17 @@ public class Booking {
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    private LocalDate bookingDate;
-
-    private String status; // e.g., "CONFIRMED", "CANCELLED"
+    private LocalDate checkInDate;
+    private LocalDate checkOutDate;
 
     // Constructors
     public Booking() {}
 
-    public Booking(User user, Room room, LocalDate bookingDate, String status) {
+    public Booking(User user, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
         this.user = user;
         this.room = room;
-        this.bookingDate = bookingDate;
-        this.status = status;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
     }
 
     // Getters and setters
@@ -40,9 +39,11 @@ public class Booking {
     public Room getRoom() { return room; }
     public void setRoom(Room room) { this.room = room; }
 
-    public LocalDate getBookingDate() { return bookingDate; }
-    public void setBookingDate(LocalDate bookingDate) { this.bookingDate = bookingDate; }
+    public LocalDate getCheckInDate() { return checkInDate; }
+    public void setCheckInDate(LocalDate checkInDate) { this.checkInDate = checkInDate; }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public LocalDate getCheckOutDate() { return checkOutDate; }
+    public void setCheckOutDate(LocalDate checkOutDate) { this.checkOutDate = checkOutDate; }
+
+
 }

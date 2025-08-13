@@ -10,6 +10,7 @@ import com.hotelbooking.hotel_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,9 +34,22 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
-    public Booking createBooking(Booking booking) {
-        // Fetch User by ID
-        User user = userRepository.findById(booking.getUser().getId())
+    public Booking createBooking(Booking booking, String username) {
+        // Validate dates
+        if (booking.getCheckInDate() == null || booking.getCheckOutDate() == null) {
+            throw new RuntimeException("Check-in and check-out dates are required");
+        }
+
+        if (booking.getCheckInDate().isAfter(booking.getCheckOutDate())) {
+            throw new RuntimeException("Check-in date cannot be after check-out date");
+        }
+
+        if (booking.getCheckInDate().isBefore(LocalDate.now())) {
+            throw new RuntimeException("Check-in date cannot be in the past");
+        }
+
+        // Fetch User by username from JWT
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // Fetch Room by ID
@@ -47,6 +61,7 @@ public class BookingService {
 
         return bookingRepository.save(booking);
     }
+
 
     public Booking updateBooking(Long id, Booking bookingDetails) {
         Booking booking = bookingRepository.findById(id)
@@ -60,13 +75,32 @@ public class BookingService {
 
         booking.setUser(user);
         booking.setRoom(room);
-        booking.setBookingDate(bookingDetails.getBookingDate());
-        booking.setStatus(bookingDetails.getStatus());
+        booking.setCheckInDate(bookingDetails.getCheckInDate());
+        booking.setCheckOutDate(bookingDetails.getCheckOutDate());
 
         return bookingRepository.save(booking);
     }
 
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
+    }
+    
+    // Find bookings by date range
+    public List<Booking> getBookingsByDateRange(LocalDate startDate, LocalDate endDate) {
+        return bookingRepository.findAll().stream()
+                .filter(booking -> !booking.getCheckOutDate().isBefore(startDate) && 
+                                   !booking.getCheckInDate().isAfter(endDate))
+                .toList();
+    }
+    
+    // Find available rooms for a date range
+    public boolean isRoomAvailableForDates(Long roomId, LocalDate checkIn, LocalDate checkOut) {
+        List<Booking> conflictingBookings = bookingRepository.findAll().stream()
+                .filter(booking -> booking.getRoom().getId().equals(roomId) &&
+                                   !(checkOut.isBefore(booking.getCheckInDate()) || 
+                                     checkIn.isAfter(booking.getCheckOutDate())))
+                .toList();
+        
+        return conflictingBookings.isEmpty();
     }
 }
