@@ -6,6 +6,7 @@ import BookingForm from "./components/BookingForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Toaster } from "react-hot-toast";
+import Home from "./components/Home";
 
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
         {/* Main content with padding */}
         <main className="flex-1 container mx-auto px-4 py-6">
           <Routes>
-            <Route path="/" element={<HotelList />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/hotels" element={<HotelList />} />
+
             <Route path="/hotel/:id" element={<RoomList />} />
             <Route path="/book/:roomId" element={<BookingForm />} />
             <Route path="/login" element={<Login />} />

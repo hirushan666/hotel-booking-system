@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
 
+
 export default function HotelList() {
   const [hotels, setHotels] = useState([]);
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ export default function HotelList() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <div className="min-h-screen bg-cover bg-center p-8"
+  >
       <h1 className="text-3xl font-bold mb-6 text-blue-700 text-center">Available Hotels</h1>
       <div className="grid gap-6 sm:grid-cols-2">
         {hotels.map((hotel) => (
