@@ -18,6 +18,8 @@ public class Hotel {
     private String country;
     private String phoneNumber;
 
+    private String imageUrl;
+
     // Constructors
     public Hotel() {}
 
