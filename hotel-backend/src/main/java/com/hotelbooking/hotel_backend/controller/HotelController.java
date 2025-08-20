@@ -5,9 +5,16 @@ import com.hotelbooking.hotel_backend.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 @RestController
 @RequestMapping("/api/hotels")
@@ -37,6 +44,39 @@ public class HotelController {
     public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
         Hotel createdHotel = hotelService.createHotel(hotel);
         return ResponseEntity.ok(createdHotel); // You could return 201 Created here if needed
+    }
+
+    // CREATE hotel with image upload
+    @PostMapping("/with-image")
+    public ResponseEntity<Hotel> createHotelWithImage(
+            @RequestParam("name") String name,
+            @RequestParam("address") String address,
+            @RequestParam("city") String city,
+            @RequestParam("country") String country,
+            @RequestParam("phoneNumber") String phoneNumber,
+            @RequestParam(value = "file", required = false) MultipartFile file
+    ) {
+        String imageUrl = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+                String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+                Path path = Paths.get("uploads/" + fileName);
+                Files.createDirectories(path.getParent());
+                Files.copy(file.getInputStream(), path, REPLACE_EXISTING);
+                imageUrl = "/images/" + fileName;
+            } catch (IOException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+        Hotel hotel = new Hotel();
+        hotel.setName(name);
+        hotel.setAddress(address);
+        hotel.setCity(city);
+        hotel.setCountry(country);
+        hotel.setPhoneNumber(phoneNumber);
+        hotel.setImageUrl(imageUrl);
+        Hotel createdHotel = hotelService.createHotel(hotel);
+        return ResponseEntity.ok(createdHotel);
     }
 
     // UPDATE a hotel
