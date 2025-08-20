@@ -1,0 +1,164 @@
+/* Global reset for safety */
+.home {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: white;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero h1 {
+  position: relative;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 1;
+  margin: 0;
+}
+
+.hero p {
+  position: relative;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero button {
+  position: relative;
+  margin-top: 2rem;
+  background: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.hero button:hover {
+  background: #1e40af;
+}
+
+/* Features Section */
+.features {
+  background: #f9fafb;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.feature-card h3 {
+  color: #2563eb;
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* About Section */
+.about {
+  background: #fff;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+/* Contact Section */
+.contact {
+  background: #111827;
+  color: white;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  margin: 0.3rem 0;
+}
+
+.contact .copy {
+  margin-top: 1.5rem;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}

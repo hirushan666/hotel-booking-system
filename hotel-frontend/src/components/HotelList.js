@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
-
+import "./HotelList.css"; // Plain CSS file
 
 export default function HotelList() {
   const [hotels, setHotels] = useState([]);
@@ -12,22 +12,21 @@ export default function HotelList() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cover bg-center p-8"
-  >
-      <h1 className="text-3xl font-bold mb-6 text-blue-700 text-center">Available Hotels</h1>
-      <div className="grid gap-6 sm:grid-cols-2">
+    <div className="hotel-list-container">
+      <h1 className="hotel-list-title">Available Hotels</h1>
+
+      <div className="hotel-grid">
         {hotels.map((hotel) => (
-          <div
-            key={hotel.id}
-            className="bg-white rounded-xl shadow-md border border-blue-100 p-6 flex flex-col justify-between hover:shadow-lg transition duration-200"
-          >
-            <div>
-              <h2 className="text-xl font-semibold text-blue-800 mb-2">{hotel.name}</h2>
-              <p className="text-gray-600 mb-4">{hotel.address}, {hotel.city}, {hotel.country}</p>
+          <div key={hotel.id} className="hotel-card">
+            <div className="hotel-info">
+              <h2 className="hotel-name">{hotel.name}</h2>
+              <p className="hotel-address">
+                {hotel.city}
+              </p>
             </div>
             <button
+              className="hotel-btn"
               onClick={() => navigate(`/hotel/${hotel.id}`)}
-              className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition font-medium shadow"
             >
               View Rooms
             </button>
