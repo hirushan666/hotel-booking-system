@@ -52,6 +52,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/test/health").permitAll()
                         .requestMatchers("/api/users/**").authenticated()
                         .requestMatchers("/api/bookings/**").authenticated()
+                        .requestMatchers("/api/upload/**","/api/hotels/with-image").permitAll()
+                        .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/error").permitAll()
+
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

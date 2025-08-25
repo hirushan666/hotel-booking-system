@@ -9,9 +9,8 @@ A full-stack hotel booking application built with React frontend and Spring Boot
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
 - Java 17 or higher
-- Maven 3.6 or higher
+- Maven 3.0 or higher
 - MySQL 8.0 or higher
 
 ## Backend Setup

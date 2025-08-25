@@ -18,6 +18,14 @@ export default function HotelList() {
       <div className="hotel-grid">
         {hotels.map((hotel) => (
           <div key={hotel.id} className="hotel-card">
+            {hotel.imageUrl && (
+              <img
+                src={`http://localhost:8080${hotel.imageUrl}`}
+                alt={hotel.name}
+                className="hotel-image"
+                style={{ width: "100%", height: "180px", objectFit: "cover", borderRadius: "8px 8px 0 0" }}
+              />
+            )}
             <div className="hotel-info">
               <h2 className="hotel-name">{hotel.name}</h2>
               <p className="hotel-address">

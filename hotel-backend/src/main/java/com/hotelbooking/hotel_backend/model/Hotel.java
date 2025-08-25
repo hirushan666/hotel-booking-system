@@ -18,6 +18,8 @@ public class Hotel {
     private String country;
     private String phoneNumber;
 
+    private String imageUrl;
+
     // Constructors
     public Hotel() {}
 
@@ -27,6 +29,15 @@ public class Hotel {
         this.city = city;
         this.country = country;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Hotel(String name, String address, String city, String country, String phoneNumber, String imageUrl) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.imageUrl = imageUrl;
     }
 
     // Getters & Setters
@@ -73,5 +84,7 @@ public class Hotel {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-}
 
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+}

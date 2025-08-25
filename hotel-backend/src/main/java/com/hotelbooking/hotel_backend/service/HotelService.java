@@ -30,10 +30,14 @@ public class HotelService {
         return hotelRepository.findById(id).map(hotel -> {
             hotel.setName(updatedHotel.getName());
             hotel.setAddress(updatedHotel.getAddress());
+            hotel.setImageUrl(updatedHotel.getImageUrl()); // include image
+
             // Add more fields if necessary
             return hotelRepository.save(hotel);
         });
     }
+
+
 
     public boolean deleteHotel(Long id) {
         if (hotelRepository.existsById(id)) {
