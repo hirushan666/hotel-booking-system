@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -12,39 +13,24 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <nav className="navbar">
+      <div className="navbar-inner">
         {/* Logo */}
         <NavLink
           to="/"
-          className="text-2xl font-extrabold text-blue-700 hover:text-blue-900 transition duration-200 tracking-tight"
+          className="navbar-logo"
         >
           DreamStay
         </NavLink>
 
         {/* Links */}
-        <div className="flex items-center space-x-6">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `text-sm font-medium transition ${
-                isActive
-                  ? "text-blue-600 border-b-2 border-blue-600 pb-1"
-                  : "text-gray-700 hover:text-blue-600"
-              }`
-            }
-          >
-            Home
-          </NavLink>
-
+        <div className="navbar-links">
           <NavLink
             to="/hotels"
             className={({ isActive }) =>
-              `text-sm font-medium transition ${
-                isActive
-                  ? "text-blue-600 border-b-2 border-blue-600 pb-1"
-                  : "text-gray-700 hover:text-blue-600"
-              }`
+              isActive
+                ? "navbar-link active"
+                : "navbar-link"
             }
           >
             Hotels
@@ -55,11 +41,9 @@ export default function Navbar() {
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
-                  `text-sm font-medium transition ${
-                    isActive
-                      ? "text-green-600 border-b-2 border-green-600 pb-1"
-                      : "text-gray-700 hover:text-green-600"
-                  }`
+                  isActive
+                    ? "navbar-link login active"
+                    : "navbar-link login"
                 }
               >
                 Login
@@ -68,11 +52,9 @@ export default function Navbar() {
               <NavLink
                 to="/register"
                 className={({ isActive }) =>
-                  `text-sm font-medium transition ${
-                    isActive
-                      ? "text-purple-600 border-b-2 border-purple-600 pb-1"
-                      : "text-gray-700 hover:text-purple-600"
-                  }`
+                  isActive
+                    ? "navbar-link register active"
+                    : "navbar-link register"
                 }
               >
                 Register
@@ -81,7 +63,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-1.5 rounded-lg hover:bg-red-600 transition font-medium shadow-sm"
+              className="navbar-logout"
             >
               Logout
             </button>

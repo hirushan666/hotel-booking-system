@@ -31,6 +31,15 @@ public class Hotel {
         this.phoneNumber = phoneNumber;
     }
 
+    public Hotel(String name, String address, String city, String country, String phoneNumber, String imageUrl) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.imageUrl = imageUrl;
+    }
+
     // Getters & Setters
     public Long getId() {
         return id;
@@ -79,4 +88,3 @@ public class Hotel {
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
-

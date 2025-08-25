@@ -1,17 +1,21 @@
+
 import React, { useEffect, useState } from "react";
 import API from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import LoginPromptModal from "./LoginPromptModal";
+import "./RoomList.css";
 
 export default function RoomList() {
   const { id } = useParams();
   const [rooms, setRooms] = useState([]);
+  const [hotelName, setHotelName] = useState("");
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     API.get(`/rooms/hotel/${id}`).then((res) => setRooms(res.data));
+    API.get(`/hotels/${id}`).then((res) => setHotelName(res.data.name));
   }, [id]);
 
   const handleBookClick = (roomId) => {
@@ -33,26 +37,37 @@ export default function RoomList() {
   // };
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6 text-blue-700 text-center">Rooms</h1>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {rooms.map((room) => (
-          <div
-            key={room.id}
-            className="bg-white rounded-xl shadow-md border border-blue-100 p-6 flex flex-col justify-between hover:shadow-lg transition duration-200"
-          >
-            <div>
-              <h2 className="text-lg font-semibold text-blue-800 mb-2">{room.roomNumber} - {room.type}</h2>
-              <p className="text-gray-600 mb-4">Price: <span className="font-bold">LKR {room.price}</span></p>
+    <div className="roomlist-container">
+      <h1 className="roomlist-title">Rooms for - {hotelName}</h1>
+      <div className="roomlist-grid">
+        {rooms.map((room) => {
+          const typeToImage = {
+            Deluxe: "/room-images/deluxe.jpg",
+            Standard: "/room-images/standard.jpg",
+            Suite: "/room-images/suite.jpg"
+          };
+          const imgSrc = typeToImage[room.type] || "/room-images/default.png";
+          return (
+            <div key={room.id} className="roomlist-card">
+              <img
+                src={imgSrc}
+                alt={room.type}
+                className="roomlist-room-image"
+                style={{ width: "100%", height: "170px", objectFit: "cover", borderRadius: "0.5rem 0.5rem 0 0" }}
+              />
+              <div>
+                <h2 className="roomlist-card-title">{room.roomNumber} {room.type}</h2>
+                <p className="roomlist-card-price">Price: <span>LKR {room.price}</span></p>
+              </div>
+              <button
+                onClick={() => handleBookClick(room.id)}
+                className="roomlist-book-btn"
+              >
+                Book Now
+              </button>
             </div>
-            <button
-              onClick={() => handleBookClick(room.id)}
-              className="mt-auto bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition font-medium shadow"
-            >
-              Book Now
-            </button>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {showLoginPrompt && (

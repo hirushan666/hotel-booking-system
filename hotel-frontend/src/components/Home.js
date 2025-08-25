@@ -69,7 +69,7 @@ export default function Home() {
         <h2>Contact Us</h2>
         <p>Email: support@dreamstay.com</p>
         <p>Phone: +94 71 234 5678</p>
-        <p>Address: Colombo, Sri Lanka</p>
+        <p>Address: No 64, Kinsey Road, Colombo 7, Sri Lanka</p>
         <p className="copy">© 2025 DreamStay. All rights reserved.</p>
       </footer>
     </div>

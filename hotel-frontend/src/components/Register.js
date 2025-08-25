@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../api";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import "./Register.css";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -35,42 +36,42 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white p-8 rounded-xl shadow-lg border border-blue-100">
-      <form onSubmit={handleRegister} className="space-y-5">
-        <h2 className="text-2xl font-bold mb-6 text-blue-700 text-center">Register</h2>
+    <div className="register-container">
+      <form onSubmit={handleRegister} className="register-form">
+        <h2 className="register-title">Register</h2>
         <div>
-          <label className="block mb-1 font-medium text-gray-700">Username:</label>
+          <label className="register-label">Username:</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="register-input"
           />
         </div>
         <div>
-          <label className="block mb-1 font-medium text-gray-700">Email:</label>
+          <label className="register-label">Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="register-input"
           />
         </div>
         <div>
-          <label className="block mb-1 font-medium text-gray-700">Password:</label>
+          <label className="register-label">Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="register-input"
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition font-semibold shadow"
+          className="register-btn"
         >
           Register
         </button>

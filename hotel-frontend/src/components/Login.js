@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../api";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import "./Login.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -29,32 +30,32 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white p-8 rounded-xl shadow-lg border border-blue-100">
-      <form onSubmit={handleLogin} className="space-y-5">
-        <h2 className="text-2xl font-bold mb-6 text-blue-700 text-center">Login</h2>
+    <div className="login-container">
+      <form onSubmit={handleLogin} className="login-form">
+        <h2 className="login-title">Login</h2>
         <div>
-          <label className="block mb-1 font-medium text-gray-700">Username:</label>
+          <label className="login-label">Username:</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="login-input"
           />
         </div>
         <div>
-          <label className="block mb-1 font-medium text-gray-700">Password:</label>
+          <label className="login-label">Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="login-input"
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition font-semibold shadow"
+          className="login-btn"
         >
           Login
         </button>
