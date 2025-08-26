@@ -16,11 +16,14 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         {/* Logo */}
-        <NavLink
-          to="/"
-          className="navbar-logo"
-        >
-          DreamStay
+        <NavLink to="/" className="navbar-logo">
+          <img
+            src="./Dreamstay.png"
+            alt="DreamStay Logo"
+            s
+            className="logo-img"
+          />
+          <span className="logo-text">DreamStay</span>
         </NavLink>
 
         {/* Links */}
@@ -28,22 +31,28 @@ export default function Navbar() {
           <NavLink
             to="/hotels"
             className={({ isActive }) =>
-              isActive
-                ? "navbar-link active"
-                : "navbar-link"
+              isActive ? "navbar-link active" : "navbar-link"
             }
           >
             Hotels
           </NavLink>
+          {token && (
+            <NavLink
+              to="/bookings"
+              className={({ isActive }) =>
+                isActive ? "navbar-link active" : "navbar-link"
+              }
+            >
+              Bookings
+            </NavLink>
+          )}
 
           {!token ? (
             <>
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
-                  isActive
-                    ? "navbar-link login active"
-                    : "navbar-link login"
+                  isActive ? "navbar-link login active" : "navbar-link login"
                 }
               >
                 Login
@@ -61,10 +70,7 @@ export default function Navbar() {
               </NavLink>
             </>
           ) : (
-            <button
-              onClick={handleLogout}
-              className="navbar-logout"
-            >
+            <button onClick={handleLogout} className="navbar-logout">
               Logout
             </button>
           )}

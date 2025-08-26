@@ -45,7 +45,7 @@
 
 .register-btn {
   width: 100%;
-  background: #22c55e;
+  background: #3530c2;
   color: #fff;
   padding: 0.75rem 0;
   border: none;
@@ -57,5 +57,6 @@
   transition: background 0.2s;
 }
 .register-btn:hover {
-  background: #16a34a;
+    background: #3530c2;
+
 }

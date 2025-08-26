@@ -34,7 +34,7 @@
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(30, 64, 175, 0.08);
-  border: 1px solid #dbeafe; /* blue-100 */
+  border: 2px solid #2563eb; /* blue-700 */
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@
 
 .roomlist-book-btn {
   margin-top: auto;
-  background: #22c55e; /* green-500 */
+  background: #2d54d7; /* green-500 */
   color: #fff;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -74,5 +74,4 @@
   transition: background 0.2s;
 }
 .roomlist-book-btn:hover {
-  background: #16a34a; /* green-600 */
-}
+background: #2d54d7;}

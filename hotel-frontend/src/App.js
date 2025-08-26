@@ -12,7 +12,7 @@ import Home from "./components/Home";
 function App() {
   return (
     <Router>
-      {/* Toast notifications */}
+      
       <Toaster
         position="bottom-center"
         reverseOrder={false}
@@ -28,10 +28,10 @@ function App() {
       />
 
       <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
-        {/* Navbar stays fixed at the top */}
+        
         <Navbar />
 
-        {/* Main content with padding */}
+        
         <main className="flex-1 container mx-auto px-4 py-6">
           <Routes>
             <Route path="/" element={<Home />} />

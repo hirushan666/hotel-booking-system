@@ -58,7 +58,7 @@ export default function Home() {
       <section className="about">
         <h2 data-aos="fade-right">About Us</h2>
         <p data-aos="fade-left">
-          DreamStay is your trusted partner for finding hotels worldwide.
+          DreamStay is your trusted partner for finding hotels in Sri Lanka.
           Whether you want a luxury resort, a budget-friendly stay, or a
           family-friendly option, we’ve got you covered.
         </p>
