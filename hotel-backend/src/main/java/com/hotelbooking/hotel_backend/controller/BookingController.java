@@ -33,7 +33,15 @@ public class BookingController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/user")
+    public ResponseEntity<List<Booking>> getBookingsForUser(Authentication authentication) {
+        String username = authentication.getName();
+        List<Booking> bookings = bookingService.getBookingsByUsername(username);
+        return ResponseEntity.ok()
+                .header("cache-control", "no-store")
+                .body(bookings);
 
+    }
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody Booking booking, Authentication authentication) {
         System.out.println("📌 Incoming booking request");

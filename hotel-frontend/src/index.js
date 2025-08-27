@@ -10,10 +10,10 @@ root.render(
   </React.StrictMode>
 );
 
-window.addEventListener("unload", () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("userId");
-});
+// window.addEventListener("unload", () => {
+//   localStorage.removeItem("token");
+//   localStorage.removeItem("userId");
+// });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

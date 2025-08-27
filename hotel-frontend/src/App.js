@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { Toaster } from "react-hot-toast";
 import Home from "./components/Home";
+import Bookings from "./components/Bookings";
+
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/hotels" element={<HotelList />} />
+            <Route path="/bookings" element={<Bookings />} />
 
             <Route path="/hotel/:id" element={<RoomList />} />
             <Route path="/book/:roomId" element={<BookingForm />} />

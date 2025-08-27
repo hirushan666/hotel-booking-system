@@ -20,6 +20,7 @@ export default function Login() {
         if (token) {
           localStorage.setItem("token", token);
           localStorage.setItem("username", username);
+          // console.log(localStorage.getItem("token"));
           toast.success("Login successful!");
           navigate(redirect); // redirect after login
         } else {

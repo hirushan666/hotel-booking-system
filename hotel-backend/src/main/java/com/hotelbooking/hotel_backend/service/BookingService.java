@@ -103,4 +103,8 @@ public class BookingService {
         
         return conflictingBookings.isEmpty();
     }
+    public List<Booking> getBookingsByUsername(String username) {
+        // Query your repository for bookings by username
+        return bookingRepository.findByUser_Username(username);
+    }
 }

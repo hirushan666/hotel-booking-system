@@ -1,0 +1,174 @@
+/* Container */
+.bookings-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #f0f4ff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 60, 180, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page title */
+.bookings-container h1 {
+  text-align: center;
+  color: #1e40af;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Bookings list */
+.bookings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Booking card */
+.booking-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #3b82f6;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card hover effect */
+.booking-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.15);
+}
+
+/* Hotel name */
+.booking-card h2 {
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* Card details */
+.booking-card p {
+  margin: 0.25rem 0;
+  color: #1e3a8a;
+  font-size: 0.95rem;
+}
+
+/* Highlighted strong text */
+.booking-card strong {
+  color: #2563eb;
+}
+
+/* Hotel image */
+.hotel-image {
+  width: 100%;
+  border-radius: 12px;
+  margin: 0.8rem 0;
+  object-fit: cover;
+  height: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Cancel button */
+.cancel-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #d62828;
+  transform: translateY(-2px);
+}
+
+/* Loading and error messages */
+.bookings-container p {
+  text-align: center;
+  color: #1e3a8a;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.bookings-container p[style*="red"] {
+  color: #dc2626; /* error messages */
+}
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 64, 175, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal box */
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 60, 180, 0.2);
+}
+
+/* Modal buttons */
+.modal-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Common button style */
+.btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  min-width: 120px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* No / Cancel button */
+.btn-cancel {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Yes / Confirm button */
+.btn-confirm {
+  background: linear-gradient(135deg, #e63946, #d62828);
+  color: #fff;
+}
+
+.btn-confirm:hover {
+  background: linear-gradient(135deg, #d62828, #b71c1c);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
