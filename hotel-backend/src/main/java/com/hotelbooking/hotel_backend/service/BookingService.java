@@ -107,4 +107,11 @@ public class BookingService {
         // Query your repository for bookings by username
         return bookingRepository.findByUser_Username(username);
     }
+    // Get all booked date ranges for a specific room
+    public List<Booking> getBookingsForRoom(Long roomId) {
+        return bookingRepository.findAll().stream()
+                .filter(booking -> booking.getRoom().getId().equals(roomId))
+                .toList();
+    }
+
 }

@@ -87,4 +87,13 @@ public class BookingController {
         boolean isAvailable = bookingService.isRoomAvailableForDates(roomId, checkIn, checkOut);
         return ResponseEntity.ok(isAvailable);
     }
+    // Get all booked date ranges for a specific room
+    @GetMapping("/room/{roomId}/booked-dates")
+    public ResponseEntity<List<Booking>> getBookedDatesForRoom(@PathVariable Long roomId) {
+        List<Booking> bookings = bookingService.getBookingsForRoom(roomId);
+        return ResponseEntity.ok()
+                .header("cache-control", "no-store")
+                .body(bookings);
+    }
+
 }

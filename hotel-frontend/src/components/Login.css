@@ -1,61 +1,96 @@
-/* Login.css - Blue and White Theme */
-
+/* Container */
 .login-container {
-  max-width: 400px;
-  margin: 3rem auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.10);
-  border: 1px solid #dbeafe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #93c5fd, #ffffff); /* stronger blue to white */
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+
 }
 
-.login-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #1d4ed8;
+/* Optional floating abstract shapes */
+.login-container::before,
+.login-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12; /* slightly more visible */
+  background: #3b82f6; /* vibrant blue shapes */
+  z-index: 0;
+}
+
+.login-container::before {
+  width: 250px;
+  height: 250px;
+  top: -80px;
+  left: -80px;
+}
+
+.login-container::after {
+  width: 350px;
+  height: 350px;
+  bottom: -120px;
+  right: -120px;
+}
+
+/* Form styling */
+.login-form {
+  position: relative;
+  z-index: 1; /* Ensure form is above shapes */
+  background: rgba(255, 255, 255, 0.98);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.login-title {
+  margin-bottom: 1.5rem;
+  color: #1d4ed8; /* stronger blue for title */
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .login-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #1e40af; /* deep blue labels */
   font-weight: 500;
-  color: #334155;
-  margin-bottom: 0.25rem;
 }
 
 .login-input {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1.2rem;
   border: 1px solid #cbd5e1;
   border-radius: 0.5rem;
-  font-size: 1rem;
   outline: none;
-  transition: border 0.2s;
+  font-size: 1rem;
+  transition: border-color 0.2s;
 }
+
 .login-input:focus {
-  border: 1.5px solid #60a5fa;
+  border-color: #2563eb; /* noticeable blue on focus */
 }
 
 .login-btn {
   width: 100%;
-  background: #2563eb;
-  color: #fff;
-  padding: 0.75rem 0;
+  padding: 0.7rem;
+  background: #1d4ed8; /* darker blue button */
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
   border: none;
   border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 1px 4px rgba(37,99,235,0.10);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.3s;
 }
+
 .login-btn:hover {
-  background: #1d4ed8;
+  background: #2563eb; /* lighter hover effect */
 }
