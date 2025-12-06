@@ -57,7 +57,7 @@ export default function RoomList() {
               />
               <div>
                 <h2 className="roomlist-card-title">{room.roomNumber} {room.type}</h2>
-                <p className="roomlist-card-price">Price: <span>LKR {room.price}</span></p>
+                <p className="roomlist-card-price">Price: <span>LKR {room.price}</span>/day</p>
               </div>
               <button
                 onClick={() => handleBookClick(room.id)}

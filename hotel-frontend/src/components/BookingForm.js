@@ -87,7 +87,11 @@ export default function BookingForm() {
   };
 
   const handleCancel = () => {
-    navigate(-1);
+    if (roomInfo?.hotel?.id) {
+      navigate(`/hotel/${roomInfo.hotel.id}`);
+    } else {
+      navigate("/hotels");
+    }
   };
 
   return (
