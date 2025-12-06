@@ -151,7 +151,7 @@ export default function BookingForm() {
                 <button
                   onClick={() => {
                     setShowSuccessModal(false);
-                    navigate("/");
+                    navigate("/hotels");
                   }}
                 >
                   Close
