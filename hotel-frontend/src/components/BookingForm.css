@@ -1,25 +1,26 @@
-/* Page background with overlay */
-.booking-page {
-  background: linear-gradient(135deg, #e0f0ff 0%, #1e40af 100%);
-  min-height: 100vh;
+/* Overlay layout similar to update booking */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 64, 175, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  padding: 1rem;
 }
 
-.booking-overlay {
-  background: rgba(255, 255, 255, 0.7); /* white semi-transparent */
-  backdrop-filter: blur(8px);
-}
-
-.booking-form-container {
-  background: #ffffff;
-  padding: 2rem 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  width: 400px;
-  max-width: 90%;
-  color: #333;
+.booking-modal {
+  background: linear-gradient(145deg, #ffffff 0%, #e7ecff 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.25);
+  max-width: 520px;
+  width: 100%;
+  color: #1e3a8a;
 }
 
 .booking-form-title {
@@ -50,13 +51,19 @@
   font-weight: 500;
 }
 
+.booking-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
 .submit-btn {
-  width: 100%;
-  padding: 0.7rem;
+  padding: 0.7rem 1.8rem;
   background: #1e40af;
   color: #fff;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -64,6 +71,22 @@
 
 .submit-btn:hover {
   background: #3b82f6;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  padding: 0.6rem 1.8rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: #2563eb;
+  color: #fff;
 }
 
 /* Success modal styling */
