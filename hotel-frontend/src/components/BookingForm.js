@@ -86,50 +86,54 @@ export default function BookingForm() {
     }
   };
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className="booking-page">
-      <div className="booking-overlay">
-        <div className="booking-form-container">
-          <h1 className="booking-form-title">Book Your Stay</h1>
+    <div className="booking-modal-overlay">
+      <div className="booking-modal">
+        <h2 className="booking-form-title">Book Your Stay</h2>
 
-          {roomInfo && (
-            <div className="room-details">
-              <p><strong>Hotel:</strong> {roomInfo.hotel.name}</p>
-              <p><strong>Room Type:</strong> {roomInfo.type}</p>
-            </div>
-          )}
+        {roomInfo && (
+          <div className="room-details">
+            <p><strong>Hotel:</strong> {roomInfo.hotel.name}</p>
+            <p><strong>Room Type:</strong> {roomInfo.type}</p>
+          </div>
+        )}
 
-          <form
-            className="booking-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleBooking();
-            }}
-          >
-            <div className="form-group">
-              <label>Check-in Date:</label>
-              <DatePicker
-                selected={checkInDate}
-                onChange={(date) => setCheckInDate(date)}
-                excludeDates={bookedDates}
-                minDate={new Date()}
-                dateFormat="yyyy-MM-dd"
-                placeholderText="Select check-in date"
-              />
-            </div>
+        <form
+          className="booking-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleBooking();
+          }}
+        >
+          <div className="form-group">
+            <label>Check-in Date:</label>
+            <DatePicker
+              selected={checkInDate}
+              onChange={(date) => setCheckInDate(date)}
+              excludeDates={bookedDates}
+              minDate={new Date()}
+              dateFormat="yyyy-MM-dd"
+              placeholderText="Select check-in date"
+            />
+          </div>
 
-            <div className="form-group">
-              <label>Check-out Date:</label>
-              <DatePicker
-                selected={checkOutDate}
-                onChange={(date) => setCheckOutDate(date)}
-                excludeDates={bookedDates}
-                minDate={checkInDate || new Date()}
-                dateFormat="yyyy-MM-dd"
-                placeholderText="Select check-out date"
-              />
-            </div>
+          <div className="form-group">
+            <label>Check-out Date:</label>
+            <DatePicker
+              selected={checkOutDate}
+              onChange={(date) => setCheckOutDate(date)}
+              excludeDates={bookedDates}
+              minDate={checkInDate || new Date()}
+              dateFormat="yyyy-MM-dd"
+              placeholderText="Select check-out date"
+            />
+          </div>
 
+          <div className="booking-actions">
             <button
               type="submit"
               className="submit-btn"
@@ -137,29 +141,36 @@ export default function BookingForm() {
             >
               {loading ? "Booking..." : "Confirm Booking"}
             </button>
-          </form>
+            <button
+              type="button"
+              className="secondary-btn"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
 
-          {showLoginPrompt && (
-            <LoginPromptModal onClose={() => setShowLoginPrompt(false)} />
-          )}
+        {showLoginPrompt && (
+          <LoginPromptModal onClose={() => setShowLoginPrompt(false)} />
+        )}
 
-          {showSuccessModal && (
-            <div className="success-modal">
-              <div className="success-modal-content">
-                <h2>Booking Successful!</h2>
-                <p>Your room has been booked.</p>
-                <button
-                  onClick={() => {
-                    setShowSuccessModal(false);
-                    navigate("/hotels");
-                  }}
-                >
-                  Close
-                </button>
-              </div>
+        {showSuccessModal && (
+          <div className="success-modal">
+            <div className="success-modal-content">
+              <h2>Booking Successful!</h2>
+              <p>Your room has been booked.</p>
+              <button
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  navigate("/hotels");
+                }}
+              >
+                Close
+              </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
