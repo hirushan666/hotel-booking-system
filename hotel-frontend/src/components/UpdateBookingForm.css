@@ -13,12 +13,14 @@
 }
 
 .update-booking-modal {
-  background: linear-gradient(145deg, #ffffff 0%, #e7ecff 100%);
+  background: #ffffff;
   border-radius: 18px;
   max-width: 520px;
   width: 100%;
   padding: 2.5rem 2rem;
-  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.25);
+  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.2);
+  border: 2px solid #2563eb;
+  color: #1e3a8a;
 }
 
 .update-actions {
@@ -35,9 +37,9 @@
 }
 
 .secondary-btn {
-  background: transparent;
-  border: 1px solid #2563eb;
-  color: #2563eb;
+  background: #e8f1ff;
+  border: 1px solid #1d4ed8;
+  color: #1d4ed8;
   padding: 0.6rem 1.8rem;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -46,6 +48,6 @@
 }
 
 .secondary-btn:hover {
-  background: #2563eb;
+  background: #1d4ed8;
   color: #fff;
 }
