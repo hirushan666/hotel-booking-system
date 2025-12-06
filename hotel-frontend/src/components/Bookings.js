@@ -11,6 +11,7 @@ export default function Bookings() {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [bookingToUpdate, setBookingToUpdate] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -78,6 +79,7 @@ export default function Bookings() {
       )
     );
     closeUpdateModal();
+    setShowSuccess(true);
   };
 
   // Confirm cancellation
@@ -203,6 +205,16 @@ export default function Bookings() {
           onClose={closeUpdateModal}
           onUpdated={handleBookingUpdated}
         />
+      )}
+
+      {showSuccess && (
+        <div className="success-modal">
+          <div className="success-modal-content">
+            <h2>Booking Updated!</h2>
+            <p>Your booking has been updated successfully.</p>
+            <button onClick={() => setShowSuccess(false)}>Close</button>
+          </div>
+        </div>
       )}
     </div>
   );
