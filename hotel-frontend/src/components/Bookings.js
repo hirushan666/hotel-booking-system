@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Bookings.css";
+import UpdateBookingForm from "./UpdateBookingForm";
 
 export default function Bookings() {
   const [bookings, setBookings] = useState([]);
@@ -8,6 +9,8 @@ export default function Bookings() {
 
   const [showModal, setShowModal] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [bookingToUpdate, setBookingToUpdate] = useState(null);
 
   const token = localStorage.getItem("token");
 
@@ -53,6 +56,28 @@ export default function Bookings() {
   const closeModal = () => {
     setSelectedBooking(null);
     setShowModal(false);
+  };
+
+  const openUpdateModal = (booking) => {
+    setBookingToUpdate(booking);
+    setShowUpdateModal(true);
+  };
+
+  const closeUpdateModal = () => {
+    setBookingToUpdate(null);
+    setShowUpdateModal(false);
+  };
+
+  const handleBookingUpdated = (updatedBooking) => {
+    const normalized = updatedBooking?.id
+      ? updatedBooking
+      : { ...updatedBooking, id: bookingToUpdate?.id };
+    setBookings((prev) =>
+      prev.map((booking) =>
+        booking.id === normalized.id ? { ...booking, ...normalized } : booking
+      )
+    );
+    closeUpdateModal();
   };
 
   // Confirm cancellation
@@ -132,6 +157,12 @@ export default function Bookings() {
                 />
               )}
 
+              <button
+                className="update-btn"
+                onClick={() => openUpdateModal(booking)}
+              >
+                Update Booking
+              </button>
               {/* Cancel Booking Button */}
               <button
                 className="cancel-btn"
@@ -164,6 +195,14 @@ export default function Bookings() {
             </div>
           </div>
         </div>
+      )}
+
+      {showUpdateModal && bookingToUpdate && (
+        <UpdateBookingForm
+          booking={bookingToUpdate}
+          onClose={closeUpdateModal}
+          onUpdated={handleBookingUpdated}
+        />
       )}
     </div>
   );

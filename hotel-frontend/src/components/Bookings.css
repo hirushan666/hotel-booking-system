@@ -78,6 +78,23 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+.update-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.update-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+}
+
 /* Cancel button */
 .cancel-btn {
   margin-top: 12px;
