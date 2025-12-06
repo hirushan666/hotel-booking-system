@@ -1,0 +1,51 @@
+.update-booking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 64, 175, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.update-booking-modal {
+  background: linear-gradient(145deg, #ffffff 0%, #e7ecff 100%);
+  border-radius: 18px;
+  max-width: 520px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.25);
+}
+
+.update-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.booking-error-text {
+  color: #dc2626;
+  font-weight: 500;
+  text-align: center;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  padding: 0.6rem 1.8rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: #2563eb;
+  color: #fff;
+}
